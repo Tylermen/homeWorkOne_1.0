@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class OpenDelfyCheckOneNews {
     private final static String HOME_PAGE = "http://www.delfi.lv";
     private final By CLOSE_COOKIE = By.cssSelector("a.close.cookie");
+    private final By TOP_NEWS = By.cssSelector("a.top2012-title");
 
     @Test
     public void secondHomeTest() {
@@ -21,11 +22,12 @@ public class OpenDelfyCheckOneNews {
 
         WebElement webElementelement = driver.findElement(CLOSE_COOKIE);
         webElementelement.click();
-        
+
+        WebElement firstNews = driver.findElement(TOP_NEWS);
+        firstNews.click();
+
         Assert.assertEquals(
-                "Skujiņš atsauc savu kandidatūru VID ģenerāldirektora amatam", "Skujiņš atsauc savu kandidatūru VID ģenerāldirektora amatam");
-
-
+                        "Tramps sadusmojies uz Trudo un negaidīti atsauc ASV atbalstu G7 samita komunikē - DELFI", driver.getTitle());
         driver.quit();
     }
 }

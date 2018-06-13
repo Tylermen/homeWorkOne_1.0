@@ -13,13 +13,11 @@ import java.util.List;
 public class WithIfHelp {
 
     private final static String HOME_PAGE = "http://www.delfi.lv";
-    private final String NEWS_NAME = "Video: Ar kādiem auto policija turpmāk ķers pārkāpējus ";
-    private final By ALLNEWS = By.xpath(".//*[@class = 'top2012-title']");
-
+    private final String NEWS_NAME = "Daži 'Vienotības' deputāti apsver iespēju atbalstīt Rasnača atlaišanu; frakcija vēl lems par nostāju";
+    private final By ALLNEWS = By.xpath(".//*[@class = 'top2012-title']/a");
 
     @Test
     public void tryFindNewsWithIf() {
-
 
         System.setProperty("webdriver.gecko.driver", "C://geckodriver.exe");
         WebDriver driver = new FirefoxDriver();
@@ -33,10 +31,11 @@ public class WithIfHelp {
         for (int i = 0; i < newsMenu.size(); i++) {
 
             if (newsMenu.get(i).getText().equals(NEWS_NAME)) {
+
                 break;
             }
-            Assert.assertTrue("News not found", isNewsFound);
-            driver.quit();
+            Assert.assertTrue("News not found ", isNewsFound);
+
         }
 
     }
